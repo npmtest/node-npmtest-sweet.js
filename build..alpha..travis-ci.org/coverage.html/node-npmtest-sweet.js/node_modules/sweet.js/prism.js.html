@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for node-npmtest-sweet.js/node_modules/sweet.js/prism.js</title>
+    <meta charset="utf-8">
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            height: 160px;
+            padding: 0 1em 0 1em;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 170px;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { color: #000; }
+        div.coverage-summary a:visited { color: #333; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1 style="font-weight: bold;">
+        <a href="https://github.com/npmtest/node-npmtest-sweet.js">npmtest-sweet.js (v0.0.1)</a>
+    </h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-sweet.js/node_modules/sweet.js/prism.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">1.74% <small>(2 / 115)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">0% <small>(0 / 79)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">7.14% <small>(1 / 14)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">33.33% <small>(1 / 3)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-sweet.js/node_modules/sweet.js/</a> &#187; prism.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ * Prism: Lightweight, robust, elegant syntax highlighting
+ * MIT license http://www.opensource.org/licenses/mit-license.php/
+ * @author Lea Verou http://lea.verou.me
+ */(function(){var e=/\blang(?:uage)?-(?!\*)(\w+)\b/i,t=self.Prism={languages:{insertBefore:<span class="fstat-no" title="function not covered" >function(e,n,r,i){<span class="cstat-no" title="statement not covered" ></span>i=i||t.languages;<span class="cstat-no" title="statement not covered" >v</span>ar s=i[e],o={};<span class="cstat-no" title="statement not covered" >f</span>or(var u in s)<span class="cstat-no" title="statement not covered" >if(s.hasOwnProperty(u)){<span class="cstat-no" title="statement not covered" >if(u==n)<span class="cstat-no" title="statement not covered" >for(var a in r)<span class="cstat-no" title="statement not covered" >r.hasOwnProperty(a)&amp;&amp;(o[a]=r[a]);<span class="cstat-no" title="statement not covered" >o</span></span></span>[u]=s[u]}<span class="cstat-no" title="statement not covered" ></span>r</span></span>eturn i[e]=o}</span>,DFS:<span class="fstat-no" title="function not covered" >function(e,n){<span class="cstat-no" title="statement not covered" ></span>for(var r in e){<span class="cstat-no" title="statement not covered" >n.call(e,r,e[r]);<span class="cstat-no" title="statement not covered" >O</span>bject.prototype.toString.call(e)==="[object Object]"&amp;&amp;t.languages.DFS(e[r],n)}</span>}</span>},highlightAll:<span class="fstat-no" title="function not covered" >function(e,n){<span class="cstat-no" title="statement not covered" ></span>var r=document.querySelectorAll('code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code');<span class="cstat-no" title="statement not covered" >f</span>or(var i=0,s;s=r[i++];)<span class="cstat-no" title="statement not covered" >t.highlightElement(s,e===!0,n)}</span></span>,highlightElement:<span class="fstat-no" title="function not covered" >function(r,i,s){<span class="cstat-no" title="statement not covered" ></span>var o,u,a=r;<span class="cstat-no" title="statement not covered" >w</span>hile(a&amp;&amp;!e.test(a.className))<span class="cstat-no" title="statement not covered" >a=a.parentNode;<span class="cstat-no" title="statement not covered" >i</span></span>f(a){<span class="cstat-no" title="statement not covered" >o=(a.className.match(e)||[,""])[1];<span class="cstat-no" title="statement not covered" >u</span>=t.languages[o]}<span class="cstat-no" title="statement not covered" ></span>i</span>f(!u)<span class="cstat-no" title="statement not covered" >return;<span class="cstat-no" title="statement not covered" >r</span></span>.className=r.className.replace(e,"").replace(/\s+/g," ")+" language-"+o;<span class="cstat-no" title="statement not covered" >a</span>=r.parentNode;<span class="cstat-no" title="statement not covered" >/</span>pre/i.test(a.nodeName)&amp;&amp;(a.className=a.className.replace(e,"").replace(/\s+/g," ")+" language-"+o);<span class="cstat-no" title="statement not covered" >v</span>ar f=r.textContent.trim();<span class="cstat-no" title="statement not covered" >i</span>f(!f)<span class="cstat-no" title="statement not covered" >return;<span class="cstat-no" title="statement not covered" >f</span></span>=f.replace(/&amp;/g,"&amp;amp;").replace(/&lt;/g,"&amp;lt;").replace(/&gt;/g,"&amp;gt;").replace(/\u00a0/g," ");<span class="cstat-no" title="statement not covered" >v</span>ar l={element:r,language:o,grammar:u,code:f};<span class="cstat-no" title="statement not covered" >t</span>.hooks.run("before-highlight",l);<span class="cstat-no" title="statement not covered" >i</span>f(i&amp;&amp;self.Worker){<span class="cstat-no" title="statement not covered" >var c=new Worker(t.filename);<span class="cstat-no" title="statement not covered" >c</span>.onmessage=<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>l.highlightedCode=n.stringify(JSON.parse(e.data));<span class="cstat-no" title="statement not covered" >l</span>.element.innerHTML=l.highlightedCode;<span class="cstat-no" title="statement not covered" >s</span>&amp;&amp;s.call(l.element);<span class="cstat-no" title="statement not covered" >t</span>.hooks.run("after-highlight",l)}</span>;<span class="cstat-no" title="statement not covered" >c</span>.postMessage(JSON.stringify({language:l.language,code:l.code}))}</span>else{<span class="cstat-no" title="statement not covered" >l.highlightedCode=t.highlight(l.code,l.grammar);<span class="cstat-no" title="statement not covered" >l</span>.element.innerHTML=l.highlightedCode;<span class="cstat-no" title="statement not covered" >s</span>&amp;&amp;s.call(r);<span class="cstat-no" title="statement not covered" >t</span>.hooks.run("after-highlight",l)}</span>}</span>,highlight:<span class="fstat-no" title="function not covered" >function(e,r){<span class="cstat-no" title="statement not covered" ></span>return n.stringify(t.tokenize(e,r))}</span>,tokenize:<span class="fstat-no" title="function not covered" >function(e,n){<span class="cstat-no" title="statement not covered" ></span>var r=t.Token,i=[e],s=n.rest;<span class="cstat-no" title="statement not covered" >i</span>f(s){<span class="cstat-no" title="statement not covered" >for(var o in s)<span class="cstat-no" title="statement not covered" >n[o]=s[o];<span class="cstat-no" title="statement not covered" >d</span></span>elete n.rest}<span class="cstat-no" title="statement not covered" ></span>e</span>:<span class="cstat-no" title="statement not covered" >for(var o in n){<span class="cstat-no" title="statement not covered" >if(!n.hasOwnProperty(o)||!n[o])<span class="cstat-no" title="statement not covered" >continue;<span class="cstat-no" title="statement not covered" >v</span></span>ar u=n[o],a=u.inside,f=!!u.lookbehind||0;<span class="cstat-no" title="statement not covered" >u</span>=u.pattern||u;<span class="cstat-no" title="statement not covered" >f</span>or(var l=0;l&lt;i.length;l++){<span class="cstat-no" title="statement not covered" >var c=i[l];<span class="cstat-no" title="statement not covered" >i</span>f(i.length&gt;e.length)<span class="cstat-no" title="statement not covered" >break e;<span class="cstat-no" title="statement not covered" >i</span></span>f(c instanceof r)<span class="cstat-no" title="statement not covered" >continue;<span class="cstat-no" title="statement not covered" >u</span></span>.lastIndex=0;<span class="cstat-no" title="statement not covered" >v</span>ar h=u.exec(c);<span class="cstat-no" title="statement not covered" >i</span>f(h){<span class="cstat-no" title="statement not covered" >f&amp;&amp;(f=h[1].length);<span class="cstat-no" title="statement not covered" >v</span>ar p=h.index-1+f,h=h[0].slice(f),d=h.length,v=p+d,m=c.slice(0,p+1),g=c.slice(v+1),y=[l,1];<span class="cstat-no" title="statement not covered" >m</span>&amp;&amp;y.push(m);<span class="cstat-no" title="statement not covered" >v</span>ar b=new r(o,a?t.tokenize(h,a):h);<span class="cstat-no" title="statement not covered" >y</span>.push(b);<span class="cstat-no" title="statement not covered" >g</span>&amp;&amp;y.push(g);<span class="cstat-no" title="statement not covered" >A</span>rray.prototype.splice.apply(i,y)}</span>}</span>}<span class="cstat-no" title="statement not covered" ></span>r</span></span>eturn i}</span>,hooks:{all:{},add:<span class="fstat-no" title="function not covered" >function(e,n){<span class="cstat-no" title="statement not covered" ></span>var r=t.hooks.all;<span class="cstat-no" title="statement not covered" >r</span>[e]=r[e]||[];<span class="cstat-no" title="statement not covered" >r</span>[e].push(n)}</span>,run:<span class="fstat-no" title="function not covered" >function(e,n){<span class="cstat-no" title="statement not covered" ></span>var r=t.hooks.all[e];<span class="cstat-no" title="statement not covered" >i</span>f(!r||!r.length)<span class="cstat-no" title="statement not covered" >return;<span class="cstat-no" title="statement not covered" >f</span></span>or(var i=0,s;s=r[i++];)<span class="cstat-no" title="statement not covered" >s(n)}</span></span>}},n=t.Token=<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>this.type=e;<span class="cstat-no" title="statement not covered" >t</span>his.content=t}</span>;<span class="cstat-no" title="statement not covered" >n.stringify=<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>if(typeof e=="string")<span class="cstat-no" title="statement not covered" >return e;<span class="cstat-no" title="statement not covered" >i</span></span>f(Object.prototype.toString.call(e)=="[object Array]"){<span class="cstat-no" title="statement not covered" >for(var r=0;r&lt;e.length;r++)<span class="cstat-no" title="statement not covered" >e[r]=n.stringify(e[r]);<span class="cstat-no" title="statement not covered" >r</span></span>eturn e.join("")}<span class="cstat-no" title="statement not covered" ></span>v</span>ar i={type:e.type,content:n.stringify(e.content),tag:"span",classes:["token",e.type],attributes:{}};<span class="cstat-no" title="statement not covered" >i</span>.type=="comment"&amp;&amp;(i.attributes.spellcheck="true");<span class="cstat-no" title="statement not covered" >t</span>.hooks.run("wrap",i);<span class="cstat-no" title="statement not covered" >v</span>ar s="";<span class="cstat-no" title="statement not covered" >f</span>or(var o in i.attributes)<span class="cstat-no" title="statement not covered" >s+=o+'="'+(i.attributes[o]||"")+'"';<span class="cstat-no" title="statement not covered" >r</span></span>eturn"&lt;"+i.tag+' class="'+i.classes.join(" ")+'" '+s+"&gt;"+i.content+"&lt;/"+i.tag+"&gt;"}</span>;<span class="cstat-no" title="statement not covered" >i</span>f(!self.document){<span class="cstat-no" title="statement not covered" >self.addEventListener("message",<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>var n=JSON.parse(e.data),r=n.language,i=n.code;<span class="cstat-no" title="statement not covered" >s</span>elf.postMessage(JSON.stringify(t.tokenize(i,t.languages[r])));<span class="cstat-no" title="statement not covered" >s</span>elf.close()}</span>,!1);<span class="cstat-no" title="statement not covered" >r</span>eturn}<span class="cstat-no" title="statement not covered" ></span>v</span>ar r=document.getElementsByTagName("script");<span class="cstat-no" title="statement not covered" >r</span>=r[r.length-1];<span class="cstat-no" title="statement not covered" >i</span>f(r){<span class="cstat-no" title="statement not covered" >t.filename=r.src;<span class="cstat-no" title="statement not covered" >d</span>ocument.addEventListener&amp;&amp;!r.hasAttribute("data-manual")&amp;&amp;document.addEventListener("DOMContentLoaded",t.highlightAll)}</span>}</span>)();
+<span class="cstat-no" title="statement not covered" >Prism.languages.markup={comment:/&amp;lt;!--[\w\W]*?--(&amp;gt;|&amp;gt;)/g,prolog:/&amp;lt;\?.+?\?&amp;gt;/,doctype:/&amp;lt;!DOCTYPE.+?&amp;gt;/,cdata:/&amp;lt;!\[CDATA\[[\w\W]+?]]&amp;gt;/i,tag:{pattern:/&amp;lt;\/?[\w:-]+\s*[\w\W]*?&amp;gt;/gi,inside:{tag:{pattern:/^&amp;lt;\/?[\w:-]+/i,inside:{punctuation:/^&amp;lt;\/?/,namespace:/^[\w-]+?:/}},"attr-value":{pattern:/=(('|")[\w\W]*?(\2)|[^\s&gt;]+)/gi,inside:{punctuation:/=/g}},punctuation:/\/?&amp;gt;/g,"attr-name":{pattern:/[\w:-]+/g,inside:{namespace:/^[\w-]+?:/}}}},entity:/&amp;amp;#?[\da-z]{1,8};/gi};<span class="cstat-no" title="statement not covered" >P</span>rism.hooks.add("wrap",<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>e.type==="entity"&amp;&amp;(e.attributes.title=e.content.replace(/&amp;amp;/,"&amp;"))}</span>);</span>
+<span class="cstat-no" title="statement not covered" >Prism.languages.javascript={comment:{pattern:/(^|[^\\])(\/\*[\w\W]*?\*\/|\/\/.*?(\r?\n|$))/g,lookbehind:!0},string:/("|')(\\?.)*?\1/g,regex:{pattern:/(^|[^/])\/(?!\/)(\[.+?]|\\.|[^/\r\n])+\/[gim]{0,3}(?=\s*($|[\r\n,.;})]))/g,lookbehind:!0},keyword:/\b(var|let|if|else|while|do|for|return|in|instanceof|function|new|with|typeof|try|catch|finally|null|break|continue)\b/g,"boolean":/\b(true|false)\b/g,number:/\b-?(0x)?\d*\.?\d+\b/g,operator:/[-+]{1,2}|!|=?&amp;lt;|=?&amp;gt;|={1,2}|(&amp;amp;){1,2}|\|?\||\?|\*|\//g,ignore:/&amp;(lt|gt|amp);/gi,punctuation:/[{}[\];(),.:]/g};<span class="cstat-no" title="statement not covered" >P</span>rism.languages.markup&amp;&amp;Prism.languages.insertBefore("markup","tag",{script:{pattern:/(&amp;lt;|&lt;)script[\w\W]*?(&gt;|&amp;gt;)[\w\W]*?(&amp;lt;|&lt;)\/script(&gt;|&amp;gt;)/ig,inside:{tag:{pattern:/(&amp;lt;|&lt;)script[\w\W]*?(&gt;|&amp;gt;)|(&amp;lt;|&lt;)\/script(&gt;|&amp;gt;)/ig,inside:Prism.languages.markup.tag.inside},rest:Prism.languages.javascript}}});</span>
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Mon Apr 17 2017 12:29:29 GMT+0000 (UTC)</div>
+</div>
+</body>
+</html>

@@ -1,4 +1,7 @@
-# test coverage for  [sweet.js (v3.0.1)](https://github.com/sweet-js/sweet.js#readme)  [![npm package](https://img.shields.io/npm/v/npmtest-sweet.js.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-sweet.js) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-sweet.js.svg)](https://travis-ci.org/npmtest/node-npmtest-sweet.js)
+# npmtest-sweet.js
+
+#### basic test coverage for  [sweet.js (v3.0.3)](https://github.com/sweet-js/sweet.js#readme)  [![npm package](https://img.shields.io/npm/v/npmtest-sweet.js.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-sweet.js) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-sweet.js.svg)](https://travis-ci.org/npmtest/node-npmtest-sweet.js)
+
 #### Hygienic Macros for JavaScript
 
 [![NPM](https://nodei.co/npm/sweet.js.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/sweet.js)
@@ -56,6 +59,8 @@
     "dependencies": {
         "babel-core": "^6.18.0",
         "immutable": "^3.7.4",
+        "prettier": "^1.1.0",
+        "prettier-eslint": "^5.1.0",
         "ramda": "^0.22.0",
         "ramda-fantasy": "^0.6.0",
         "readtable": "^0.0.1",
@@ -99,13 +104,13 @@
         "test": "test"
     },
     "dist": {
-        "shasum": "c11bfa38257f3bf6a86bd8dac89a49a649fbba4c",
-        "tarball": "https://registry.npmjs.org/sweet.js/-/sweet.js-3.0.1.tgz"
+        "shasum": "9518e4c309f19a88007c74000edead9fb2822142",
+        "tarball": "https://registry.npmjs.org/sweet.js/-/sweet.js-3.0.3.tgz"
     },
     "engines": {
         "node": ">=7.0.0"
     },
-    "gitHead": "84b444bfbd117b4d64139a8840ab04adbd12d7db",
+    "gitHead": "d871fef53532d94fc8d47bdce7f565a1846dc478",
     "homepage": "https://github.com/sweet-js/sweet.js#readme",
     "keywords": [
         "macros",
@@ -148,6 +153,7 @@
         "prebuild": "mkdir -p build/test build/sweet dist/",
         "precommit": "lint-staged",
         "preprofile": "npm run build",
+        "prepublish": "npm run build && npm run dist",
         "pretest": "npm run lint",
         "profile": "node --prof profile.js && node --prof-process *v8.log > v8-processed.log && rm *v8.log",
         "report": "nyc ava && nyc report--reporter=html",
@@ -155,21 +161,21 @@
         "test:262": "ava test/parser/test-run-test262.js",
         "test:ci": "npm run pretest && ava && ava test/parser/test-*.js"
     },
-    "version": "3.0.1",
+    "version": "3.0.3",
     "warnings": [
         {
             "code": "ENOTSUP",
             "required": {
                 "node": ">=7.0.0"
             },
-            "pkgid": "sweet.js@3.0.1"
+            "pkgid": "sweet.js@3.0.3"
         },
         {
             "code": "ENOTSUP",
             "required": {
                 "node": ">=7.0.0"
             },
-            "pkgid": "sweet.js@3.0.1"
+            "pkgid": "sweet.js@3.0.3"
         }
     ]
 }
